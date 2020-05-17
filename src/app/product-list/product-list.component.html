@@ -1,0 +1,100 @@
+<h2>Products</h2>
+
+<div *ngFor="let product of products">
+
+    <!--
+    *ngFor is a "structural directive". Structural directives shape or reshape the DOM's structure, typically by adding, removing, and manipulating the elements to which they are attached. Directives with an asterisk, *, are structural directives.
+    -->
+
+  <h3>
+    <a [title]="product.name + ' details'">
+
+        <!--
+        To make each product name a link to product details, add the <a> element and set its title to be the product's name by using the property binding [ ] syntax
+        -->
+
+      {{ product.name }}
+
+      <!--
+        To display the names of the products, use the interpolation syntax {{ }}. Interpolation renders a property's value as text
+      -->
+
+    </a>
+  </h3>
+
+  <p *ngIf="product.description">
+
+      <!--
+      use an *ngIf directive so that Angular only creates the <p> element if the current product has a description.
+      -->
+
+    Description: {{ product.description }}
+  </p>
+
+  <button (click)="share()">
+    Share
+  </button>
+
+  <app-product-alerts
+    [product]="product" 
+    (notify)="onNotify()">
+  </app-product-alerts>
+
+  <!--
+  Add a button so users can share a product with friends. Bind the button's click event to the share() method (in product-list.component.ts). Event binding uses a set of parentheses, ( ), around the event, as in the following <button> element
+  -->
+
+</div>
+
+<!--
+The app now has a product list and sharing feature. In the process, you've learned to use five common features of Angular's template syntax:
+
+    *ngFor
+    *ngIf
+    Interpolation {{ }}
+    Property binding [ ]
+    Event binding ( )
+-->
+
+<!--
+Components
+
+Components define areas of responsibility in the user interface, or UI, that let you reuse sets of UI functionality. You've already built one with the product list component.
+
+A component consists of three things:
+
+    A component class that handles data and functionality. In the previous section, the product data and the share() method in the component class handle data and functionality, respectively.
+    An HTML template that determines the UI. In the previous section, the product list's HTML template displays the name, description, and a "Share" button for each product.
+    Component-specific styles that define the look and feel. Though product list does not define any styles, this is where component CSS resides.
+
+An Angular application comprises a tree of components, in which each Angular component has a specific purpose and responsibility.
+
+Currently, the example app has three components:
+Online store with three components
+
+    app-root (orange box) is the application shell. This is the first component to load and the parent of all other components. You can think of it as the base page.
+    app-top-bar (blue background) is the store name and checkout button.
+    app-product-list (purple box) is the product list that you modified in the previous section.
+
+The next section expands the app's capabilities by adding a new component—a product alert—as a child of the product list component.
+-->
+
+<!--
+  Up Next:
+Congratulations! You've completed your first Angular app!
+
+You have a basic online store catalog with a product list, "Share" button, and "Notify Me" button. You've learned about the foundation of Angular: components and template syntax. You've also learned how the component class and template interact, and how components communicate with each other.
+
+To continue exploring Angular, choose either of the following options:
+
+    Continue to the "In-app navigation" section to create a product details page that can be accessed by clicking a product name and that has its own URL pattern.
+    Skip ahead to the "Deployment" section to move to local development, or deploy your app to Firebase or your own server.
+
+-->
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
